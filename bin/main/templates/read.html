@@ -1,0 +1,22 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+hello world.
+
+<form method="post">
+	<label>제목</label>
+	<a name="title" th:text="${read.title}"></a><br />
+
+	<label>작성자</label>
+	<a name="writer" th:text="${read.writer}"></a><br />
+
+	<label>내용</label>
+	<textarea name="content" th:inline="text">[[${read.content}]] </textarea>
+</form>
+
+</body>
+</html>

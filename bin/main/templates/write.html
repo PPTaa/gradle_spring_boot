@@ -1,0 +1,23 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+hello world
+<form action="/board/write" method="post">
+	<label>제목</label>
+	<input type="text" name="title" /><br />
+
+	<label>작성자</label>
+	<input type="text" name="writer" /><br />
+
+	<label>내용</label>
+	<textarea cols="50" rows="5" name="content"></textarea><br />
+
+	<button type="submit">작성</button>
+</form>
+
+</body>
+</html>

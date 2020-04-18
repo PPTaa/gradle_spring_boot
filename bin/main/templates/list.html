@@ -1,0 +1,30 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성일</th>
+			<th>작성자</th>
+			<th>조회수</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="product : ${list}">
+			<th><a th:text="${product.board_no}"></a></th>
+			<th><a th:href="@{/board/read(board_no=${product.board_no})}" th:text="${product.title}"></a></th>
+			<th th:text="${product.regDate}"></th>
+			<th th:text="${product.writer}"></th>
+			<th th:text="${product.viewCnt}"></th>
+		</tr>
+	</tbody>
+</table>
+hello world
+</body>
+</html>

@@ -1,0 +1,15 @@
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3307/board_db?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true&autoReconnection=true
+    username: Lee
+    password: 1q2w3e4r!
+    
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8081 
