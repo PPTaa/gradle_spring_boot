@@ -1,6 +1,5 @@
 package com.board.pptaa.controller;
 
-import java.io.Console;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class BoardController {
 	
 	@Autowired
 	BoardServiceImpl service;
-	
+	//개시글 리스트
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView getList(ModelAndView mav) throws Exception {
 	
@@ -31,12 +30,14 @@ public class BoardController {
 		
 		return mav;
 	}
+	//개시글 작성 페이지
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public ModelAndView writeForm(ModelAndView mav) throws Exception { 
 		
 		mav.setViewName("write");
 		return mav;
 	}
+	//개시글 작성 쿼리
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public ModelAndView write(BoardVO vo,ModelAndView mav) throws Exception {
 		
@@ -46,7 +47,7 @@ public class BoardController {
 		
 		return mav;
 	}
-	
+	//개시글 보기
 	@RequestMapping(value = "/read")
 	public ModelAndView readForm(@RequestParam("board_no") int board_no, ModelAndView mav) throws Exception {
 		
@@ -57,7 +58,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	//게시물 수정
+	//게시물 수정 페이지
 	@RequestMapping(value = "/modify")
 	public ModelAndView modifyForm(@RequestParam("board_no") int board_no, ModelAndView mav) throws Exception {
 		
@@ -67,13 +68,22 @@ public class BoardController {
 		
 		return mav;
 	}
-
+	//개시글 수정 쿼리
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public ModelAndView modify(BoardVO vo, ModelAndView mav) throws Exception {
-		
+	public ModelAndView modify(BoardVO vo, ModelAndView mav, @RequestParam("board_no") int board_no) throws Exception {
 		
 		service.modify(vo);
-		mav.setViewName("redirect:/board/read?board_no=" + vo.getBoard_no());
+		mav.setViewName("redirect:/board/read?board_no=" + board_no);
+		
+		return mav;
+	}
+	//개시글 삭제 쿼리
+	@RequestMapping("/remove")
+	public ModelAndView remove(ModelAndView mav, @RequestParam("board_no") int board_no) throws Exception {
+		
+		service.remove(board_no);
+		
+		mav.setViewName("redirect:/board/list");
 		
 		return mav;
 	}

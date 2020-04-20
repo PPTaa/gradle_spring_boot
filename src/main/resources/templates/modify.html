@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>게시글 수정</h1>
-	<form method="post">
+	<form action="/board/modify" method="post">
+		<input type="hidden" name="board_no" th:value="${read.board_no}">
 		<label>제목</label>
 		<input type="text" name="title" th:value="${read.title}"/><br />
 	

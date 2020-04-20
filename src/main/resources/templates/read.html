@@ -6,7 +6,6 @@
 </head>
 <body>
 <h1>개시글 조회</h1>
-
 	<label>제목 : </label>
 	<a name="title" th:text="${read.title}"></a><br />
 
@@ -15,7 +14,8 @@
 
 	<label>내용</label><br/>
 	<textarea name="content" th:inline="text">[[${read.content}]] </textarea><br/>
-<a th:href="@{/board/modify(board_no=${read.board_no})}">개시글 수정</a>
+<a th:href="@{/board/modify(board_no=${read.board_no})}">게시글 수정</a>
+<a th:href="@{/board/remove(board_no=${read.board_no})}">게시글 삭제</a>
 					
 
 </body>
