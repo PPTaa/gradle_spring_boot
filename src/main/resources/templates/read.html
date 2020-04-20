@@ -5,18 +5,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-hello world.
+<h1>개시글 조회</h1>
 
-<form method="post">
-	<label>제목</label>
+	<label>제목 : </label>
 	<a name="title" th:text="${read.title}"></a><br />
 
-	<label>작성자</label>
+	<label>작성자 : </label>
 	<a name="writer" th:text="${read.writer}"></a><br />
 
-	<label>내용</label>
-	<textarea name="content" th:inline="text">[[${read.content}]] </textarea>
-</form>
+	<label>내용</label><br/>
+	<textarea name="content" th:inline="text">[[${read.content}]] </textarea><br/>
+<a th:href="@{/board/modify(board_no=${read.board_no})}">개시글 수정</a>
+					
 
 </body>
 </html>
