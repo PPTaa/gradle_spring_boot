@@ -25,6 +25,21 @@
 		</tr>
 	</tbody>
 </table>
-<a href="/board/write">게시글 작성 </a>
+<a href="/board/write">게시글 작성 </a><br/>
+
+
+<div>
+	<span th:if="${page.prev}">
+		[<a th:href="@{/board/listPage(num=${page.startPageNum - 1})}">이전</a>]
+	</span>
+	<span th:each="num : ${#numbers.sequence(page.startPageNum, page.endPageNum)} " >
+		<a th:if="${select != num}" th:href="@{/board/listPage(num=${num})}" th:inline="text">[[${num}]]</a>
+		<b th:if="${select == num}" th:inline="text">[[${num}]]</b>
+	</span>
+	<span th:if="${page.next}">
+		[<a th:href="@{/board/listPage(num=${page.endPageNum + 1})}">다음</a>]
+	</span>
+
+</div>
 </body>
 </html>

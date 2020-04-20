@@ -16,6 +16,7 @@
 	<textarea name="content" th:inline="text">[[${read.content}]] </textarea><br/>
 <a th:href="@{/board/modify(board_no=${read.board_no})}">게시글 수정</a>
 <a th:href="@{/board/remove(board_no=${read.board_no})}">게시글 삭제</a>
+<a href="/board/listPage?num=1">목록으로 </a>
 					
 
 </body>

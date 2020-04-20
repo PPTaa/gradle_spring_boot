@@ -30,12 +30,12 @@ public class HomeController {
 	public String home() throws Exception{
 		List<BoardVO> list = mapper.selectMemberList();
 		
-		for(int i=0; i<list.size(); i++){
-			System.out.println(list.size());
-			System.out.println("num : " + list.get(i).getBoard_no());
-            System.out.println("title : " + list.get(i).getTitle());
-            System.out.println("date : " + list.get(i).getRegDate());
-        } 
+//		for(int i=0; i<list.size(); i++){
+//			System.out.println(list.size());
+//			System.out.println("num : " + list.get(i).getBoard_no());
+//            System.out.println("title : " + list.get(i).getTitle());
+//            System.out.println("date : " + list.get(i).getRegDate());
+//        } 
 		
 		return "index";
 	}

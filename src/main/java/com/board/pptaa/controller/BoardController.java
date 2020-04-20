@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.board.pptaa.domain.BoardVO;
+import com.board.pptaa.domain.Page;
 import com.board.pptaa.service.BoardServiceImpl;
 
 @Controller
@@ -43,7 +44,7 @@ public class BoardController {
 		
 		service.write(vo);
 		
-		mav.setViewName("redirect:/board/list");
+		mav.setViewName("redirect:/board/listPage?num=1");
 		
 		return mav;
 	}
@@ -57,7 +58,6 @@ public class BoardController {
 		
 		return mav;
 	}
-	
 	//게시물 수정 페이지
 	@RequestMapping(value = "/modify")
 	public ModelAndView modifyForm(@RequestParam("board_no") int board_no, ModelAndView mav) throws Exception {
@@ -83,8 +83,28 @@ public class BoardController {
 		
 		service.remove(board_no);
 		
-		mav.setViewName("redirect:/board/list");
+		mav.setViewName("redirect:/board/listPage?num=1");
 		
+		return mav;
+	}
+	//게시물 리스트 페이지 추가
+	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+	public ModelAndView getListPage(ModelAndView mav, @RequestParam("num") int num) throws Exception {
+		
+		Page page = new Page();
+		page.setNum(num);
+		page.setCount(service.count());
+		
+		List<BoardVO> list = null;
+		list = service.page(page.getDisplayPost(), page.getPostNum());
+
+		mav.addObject("list", list);
+
+		mav.addObject("page", page);
+		
+		mav.addObject("select", num);
+		
+		mav.setViewName("listpage");
 		return mav;
 	}
 }

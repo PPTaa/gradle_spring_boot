@@ -38,4 +38,16 @@
     delete from pptaa_board 
     where board_no = #{board_no};
     </select>
+    
+    <!-- 게시글 개수 -->
+    <select id="count" resultType="int">
+    select count(board_no) from pptaa_board;
+    </select>
+    <!-- 게시물 목록 + 페이지 -->
+    <select id="page" parameterType="hashMap" resultType="com.board.pptaa.domain.BoardVO">
+    select board_no, title, content, writer, regDate, viewCnt 
+    from pptaa_board
+	order by board_no desc 
+		limit #{displayPost}, #{postNum};
+    </select>
 </mapper>
